@@ -1,0 +1,159 @@
+<<!DOCTYPE html>
+<html lang="ha">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Na'urar ATM Mai Kwaikwayo</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: sans-serif; background: #f0f0f0; margin: 0; }
+    .screen { display: none; padding: 20px; }
+    .active { display: block; }
+    .btn { display: block; margin: 10px auto; padding: 10px; width: 80%; font-size: 16px; }
+    input { width: 80%; padding: 10px; margin: 10px auto; display: block; font-size: 16px; }
+  </style>
+</head>
+<body>
+
+  <!-- 🔐 Login / PIN Screen -->
+  <div id="loginScreen" class="screen active">
+    <h2>Shigar da PIN</h2>
+    <input type="password" id="pinInput" placeholder="Shigar da PIN" />
+    <button class="btn" onclick="login()">Shiga</button>
+  </div>
+
+  <!-- 🏠 Home Screen -->
+  <div id="homeScreen" class="screen">
+    <h2>Babban Zaɓi</h2>
+    <button class="btn" onclick="showScreen('depositScreen')">Ajiya</button>
+    <button class="btn" onclick="showScreen('withdrawScreen')">Cire Kudi</button>
+    <button class="btn" onclick="showScreen('balanceScreen')">Duba Ma’auni</button>
+    <button class="btn" onclick="showScreen('historyScreen')">Tarihin Ma’amala</button>
+    <button class="btn" onclick="showScreen('pinScreen')">Canza PIN</button>
+    <button class="btn" onclick="exitApp()">Fita</button>
+  </div>
+
+  <!-- 💳 Deposit Screen -->
+  <div id="depositScreen" class="screen">
+    <h2>Adadin Ajiya</h2>
+    <input type="number" id="depositAmount" placeholder="Shigar da adadi" />
+    <button class="btn" onclick="deposit()">Tabbatar</button>
+    <button class="btn" onclick="showScreen('homeScreen')">Soke</button>
+  </div>
+
+  <!-- 💵 Withdraw Screen -->
+  <div id="withdrawScreen" class="screen">
+    <h2>Adadin Cire Kudi</h2>
+    <input type="number" id="withdrawAmount" placeholder="Shigar da adadi" />
+    <button class="btn" onclick="withdraw()">Tabbatar</button>
+    <button class="btn" onclick="showScreen('homeScreen')">Soke</button>
+  </div>
+
+  <!-- 📊 Balance Screen -->
+  <div id="balanceScreen" class="screen">
+    <h2>Ma’aunin Asusunka</h2>
+    <p id="balanceDisplay">₦0</p>
+    <button class="btn" onclick="showScreen('homeScreen')">Koma Baya</button>
+  </div>
+
+  <!-- 🧾 Transaction History -->
+  <div id="historyScreen" class="screen">
+    <h2>Tarihin Ma’amaloli</h2>
+    <ul id="historyList"></ul>
+    <button class="btn" onclick="showScreen('homeScreen')">Koma Baya</button>
+  </div>
+
+  <!-- ⚙️ Change PIN -->
+  <div id="pinScreen" class="screen">
+    <h2>Canza Lambar PIN</h2>
+    <input type="password" id="oldPin" placeholder="Tsohon PIN" />
+    <input type="password" id="newPin" placeholder="Sabon PIN" />
+    <button class="btn" onclick="changePin()">Ajiye</button>
+    <button class="btn" onclick="showScreen('homeScreen')">Soke</button>
+  </div>
+
+  <script>
+    let correctPin = localStorage.getItem("pin") || "1234";
+    let balance = parseFloat(localStorage.getItem("balance")) || 0;
+    let history = JSON.parse(localStorage.getItem("history")) || [];
+
+    function showScreen(id) {
+      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+
+      if (id === "balanceScreen") {
+        document.getElementById("balanceDisplay").innerText = `₦${balance.toFixed(2)}`;
+      }
+
+      if (id === "historyScreen") {
+        let list = document.getElementById("historyList");
+        list.innerHTML = "";
+        history.slice().reverse().forEach(h => {
+          let item = document.createElement("li");
+          item.innerText = h;
+          list.appendChild(item);
+        });
+      }
+    }
+
+    function login() {
+      let pinInput = document.getElementById("pinInput").value;
+      if (pinInput === correctPin) {
+        showScreen("homeScreen");
+      } else {
+        alert("PIN ɗin ba daidai ba ne");
+      }
+    }
+
+    function deposit() {
+      let amount = parseFloat(document.getElementById("depositAmount").value);
+      if (!isNaN(amount) && amount > 0) {
+        balance += amount;
+        history.push(`An ajiye ₦${amount}`);
+        saveData();
+        alert("An yi nasarar ajiya");
+        showScreen("homeScreen");
+      } else {
+        alert("Shigar da adadi mai inganci");
+      }
+    }
+
+    function withdraw() {
+      let amount = parseFloat(document.getElementById("withdrawAmount").value);
+      if (!isNaN(amount) && amount > 0 && amount <= balance) {
+        balance -= amount;
+        history.push(`An cire ₦${amount}`);
+        saveData();
+        alert("An yi nasarar cire kudi");
+        showScreen("homeScreen");
+      } else {
+        alert("Adadi mara inganci ko kudin bai isa ba");
+      }
+    }
+
+    function changePin() {
+      let old = document.getElementById("oldPin").value;
+      let newp = document.getElementById("newPin").value;
+      if (old === correctPin && newp.length >= 4) {
+        correctPin = newp;
+        localStorage.setItem("pin", newp);
+        alert("An canza PIN cikin nasara");
+        showScreen("homeScreen");
+      } else {
+        alert("Tsohon PIN ba daidai ba ne ko sabon PIN bai da inganci");
+      }
+    }
+
+    function saveData() {
+      localStorage.setItem("balance", balance);
+      localStorage.setItem("history", JSON.stringify(history));
+    }
+
+    function exitApp() {
+      if (confirm("Fita daga app ɗin?")) {
+        window.close(); // May not work in browsers but works in Cordova
+      }
+    }
+  </script>
+</body>
+</html>

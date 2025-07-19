@@ -1,0 +1,94 @@
+/* General styling */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Screen container */
+.screen {
+  display: none;
+  padding: 20px;
+  max-width: 400px;
+  margin: auto;
+  margin-top: 40px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Active screen */
+.active {
+  display: block;
+}
+
+/* Headings */
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+/* Input fields */
+input {
+  display: block;
+  width: 80%;
+  margin: 12px auto;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Buttons */
+.btn {
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  padding: 14px;
+  width: 85%;
+  margin: 10px auto;
+  display: block;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #0d47a1;
+}
+
+/* Exit button style */
+.btn:last-child {
+  background-color: #c62828;
+}
+
+.btn:last-child:hover {
+  background-color: #b71c1c;
+}
+
+/* Balance display */
+#balanceDisplay {
+  text-align: center;
+  font-size: 24px;
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+/* Transaction list */
+#historyList {
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 10px 0;
+  border-top: 1px solid #ddd;
+}
+
+#historyList li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+  color: #555;
+}
