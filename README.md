@@ -2,7 +2,7 @@
 Rural Digital Finance Hub 
 Comprehensive project  Report 
 
-Team: RuralBridge Technologists
+Team: RuralNext Innovators
 Project Theme: Inclusive Banking and Digital Literacy for Underserved Communities
  Members: Rabiatu Rabiu Hussaini, Ketura Mark, Fatima Yakubu, Adaobi Cynthia Okonkwo
 1. Executive Summary
@@ -71,7 +71,7 @@ CivicTech integration: local e-voting and survey participation.
 Expansion into school-based digital finance clubs for youth empowerment.
 9. Conclusion
 The Rural Digital Finance Hub project demonstrates how localized, offline-first digital tools can foster economic resilience in underserved areas. By fusing FinTech, EdTech, and CivicTech, our solution provides a scalable model for inclusive development.
-Through continued development and Raspberry Pi deployment, RuralBridge Technologists remain committed to transforming rural communities into digitally connected, financially literate societies.
+Through continued development and Raspberry Pi deployment,  RuralNext Innovators remain committed to transforming rural communities into digitally connected, financially literate societies.
 Contact Information:
 Rabiatu Rabiu Hussaini
 rabiatuhussaini1@gmail.com,        07062621859
