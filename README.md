@@ -2,9 +2,9 @@
 Rural Digital Finance Hub 
 Comprehensive project  Report 
 
-Team: RuralNext Innovators
+Name: RuralBridge
 Project Theme: Inclusive Banking and Digital Literacy for Underserved Communities
- Members: Rabiatu Rabiu Hussaini, Ketura Mark, Fatima Yakubu, Adaobi Cynthia Okonkwo
+ By: Rabiatu Rabiu Hussaini.
 1. Executive Summary
 Rural communities in Africa face persistent exclusion from formal financial services due to poor infrastructure, limited access to identification systems, and low levels of digital literacy. The Rural Digital Finance Hub (RDFH) project is designed to bridge this gap by introducing a dual-solution platform that promotes financial literacy and simulates banking services through an offline-first digital application.
 Our project is executed in two major phases: Phase 1 centers on financial education via a mobile-friendly literacy app, and Phase 2 delivers a realistic ATM simulator through an offline Android application. The ultimate goal is to build financially empowered and digitally included rural populations, enabling access to essential services and participation in the digital economy.
